@@ -32,7 +32,7 @@ def read_item(file: UploadFile = File(...)):
     finally:
        file.file.close()
     # procesar todo
-    model = load("assets/model.joblib")
+    model = load("../Pipeline/pipeline.joblib")
     df = pd.read_csv("file.csv")
     y_test = df["Class"]
     result = model.best_estimator_.predict(df["Review"])
