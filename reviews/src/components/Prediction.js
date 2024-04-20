@@ -7,7 +7,7 @@ function Prediction(){
     const { precision, recall, f1 } = location.state;
     return (
         <div className='Pagina'>
-            <h1 id="unTitulo">Resultados del modelo</h1>
+            <h1 id="unTitulo">Resultados del Modelo</h1>
             <p>Ya ha sido procesado su archivo y se obtuvieron los siguientes resultados:</p>
             <Card className='carta'>
                 <h2 className="titulo">Resultados</h2>
