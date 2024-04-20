@@ -6,12 +6,12 @@ function Prediction(){
     const location = useLocation();
     const { precision, recall, f1 } = location.state;
     return (
-        <div className='Pagina'>
+        <div className='PaginaPrediction'>
             <h1 id="unTitulo">Resultados del Modelo</h1>
-            <p>Ya ha sido procesado su archivo y se obtuvieron los siguientes resultados:</p>
+            <p>El archivo fue procesado exitósamente</p>
             <Card className='carta'>
                 <h2 className="titulo">Resultados</h2>
-                <p className="resultados">Estos son las metricas asociadas a la predicción realizada por nuestro modelo:</p>
+                <p className="resultados">Estos son las métricas de desempeño asociadas a la predicción realizada por el modelo:</p>
                 <p className="metricas">Precision: {precision}%</p>
                 <p className="metricas">Recall: {recall}%</p>
                 <p className="metricas">F1: {f1}%</p>

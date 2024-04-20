@@ -1,4 +1,9 @@
-.Pagina {
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.PaginaPrediction {
     text-align: justify;
   }
   #unTitulo{
@@ -7,7 +12,7 @@
     margin-bottom: 10px;
   }
 
-  .Pagina{
+  .PaginaPrediction{
     background-color: #1a1a1a;
     min-height: 100vh;
     display: flex;
@@ -16,7 +21,7 @@
     justify-content: start;
     font-size: calc(10px + 2vmin);
     color: white;
-    padding: 50px;
+    padding: 225px;
   }
   
   .App-link {

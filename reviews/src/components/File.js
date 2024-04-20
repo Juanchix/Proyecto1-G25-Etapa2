@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import '../styles/File.css';
 import axios from 'axios';
 
-function Train() {
+function File() {
     // Estado para almacenar el archivo seleccionado
     const [selectedFile, setSelectedFile] = useState(null);
     const [isClicked, setIsClicked] = useState(false);
@@ -61,4 +61,4 @@ function Train() {
 
 }
 
-export default Train;
+export default File;
