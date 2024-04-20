@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import '../styles/File.css';
 import axios from 'axios';
 
-function Train() {
+function File() {
     // Estado para almacenar el archivo seleccionado
     const [selectedFile, setSelectedFile] = useState(null);
     const [isClicked, setIsClicked] = useState(false);
@@ -11,15 +11,11 @@ function Train() {
     const [prec, setPrec] = useState(0);
     const [recall, setRecall] = useState(0);
     const [f1, setF1] = useState(0);
-
   
-    // Controlador de eventos para manejar la selección de archivos
     const handleFileChange = (event) => {
       setSelectedFile(event.target.files[0]);
       setIsUploaded(true);
     };
-  
-    // Función para manejar el envío del formulario
 
     const handleSubmit = async (event) => {
       event.preventDefault();
@@ -55,10 +51,11 @@ function Train() {
               <button disabled={!isUploaded} type='submit'>Agegar</button>
           </form>
           <Link to={'/prediction'} state = {{precision:prec,recall:recall,f1:f1}}> <button disabled={!isClicked} className='prediccion'>Clasificar</button></Link>
+          <br></br>
           <p className='advertencia'>Es necesario subir un archivo antes de proceder</p>
         </div>
     );
 
 }
 
-export default Train;
+export default File;
