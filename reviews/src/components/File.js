@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import '../styles/Train.css';
+import '../styles/File.css';
 import axios from 'axios';
 
 function Train() {

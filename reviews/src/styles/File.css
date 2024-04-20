@@ -3,12 +3,12 @@
   }
   #unTitulo{
     font-size: 80px;
-    color: #61dafb;
+    color: #00ff00;
     margin-bottom: 50px;
   }
 
   .Pagina{
-    background-color: #282c34;
+    background-color: #1a1a1a;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -20,30 +20,29 @@
   }
   
   .App-link {
-    color: #61dafb;
+    color: #00ff00;
   }
   
   
   .formulario  input{
-    width: 600px; /* Ajusta el ancho según sea necesario */
-    height: 100px; /* Ajusta la altura según sea necesario */
+    width: 600px;
+    height: 100px;
     font-size: 30px;
   }
   input#file {
-    width: 600px; /* Ajusta el ancho según sea necesario */
-    height: 100px; /* Ajusta la altura según sea necesario */
+    width: 600px;
+    height: 100px;
     font-size: 30px;
   }	
   
   .formulario  button{
-    width: 200px; /* Ajusta el ancho según sea necesario */
-    height: 45px; /* Ajusta la altura según sea necesario */
+    width: 200px;
+    height: 45px;
     font-size: 28px;
     text-align: center;
     line-height: 5px;
   }
   
-  /* CSS */
   .prediccion {
     align-items: center;
     appearance: none;

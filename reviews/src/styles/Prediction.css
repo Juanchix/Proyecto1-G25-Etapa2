@@ -3,12 +3,12 @@
   }
   #unTitulo{
     font-size: 80px;
-    color: #61dafb;
+    color: #66ff66;
     margin-bottom: 10px;
   }
 
   .Pagina{
-    background-color: #282c34;
+    background-color: #1a1a1a;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
