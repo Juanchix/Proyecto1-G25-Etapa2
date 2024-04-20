@@ -48,13 +48,13 @@ function Train() {
     return (
         <div className="Pagina">
           <h1 id="unTitulo">Modelo de Clasificación</h1>
-          <p>Este es un modelo de clasificación basado en regresión logística. Este modelo permite que para una reseña se pueda predecir una calificación de 1 a 5. Lo anterior es posible gracias al entrenamiento previo del modelo. Primero sube un archivo CSV con :</p>
+          <p>Este es un modelo de clasificación basado en regresión logística. Este modelo permite que para una reseña se pueda predecir una calificación de 1 a 5. Lo anterior es posible gracias al entrenamiento previo del modelo. Primero es necesario subir un archivo CSV con :</p>
 
           <form className="formulario" onSubmit={handleSubmit}>
               <input type="file" id="file" name="file" accept=".csv" onChange={handleFileChange}></input>
               <button disabled={!isUploaded} type='submit'>Agegar</button>
           </form>
-          <Link to={'/prediccion'} state = {{precision:prec,recall:recall,f1:f1}}> <button disabled={!isClicked} className='prediccion'>Predicción</button></Link>
+          <Link to={'/prediction'} state = {{precision:prec,recall:recall,f1:f1}}> <button disabled={!isClicked} className='prediccion'>Clasificar</button></Link>
           <p className='advertencia'>Es necesario subir un archivo antes de proceder</p>
         </div>
     );

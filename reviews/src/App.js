@@ -11,7 +11,8 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" exact element={<File />} />
-          <Route path="/predict" element={<Prediction />} />
+          <Route path="/prediction" element={<Prediction />} />
+          <Route path="*" element={<h1>Not Found</h1>} />
         </Routes>
       </BrowserRouter>
     </div>
