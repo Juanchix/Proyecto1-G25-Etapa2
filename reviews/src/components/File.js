@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import '../styles/File.css';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import '../styles/File.css';
 
 function File() {
-    // Estado para almacenar el archivo seleccionado
     const [selectedFile, setSelectedFile] = useState(null);
-    const [isClicked, setIsClicked] = useState(false);
     const [isUploaded, setIsUploaded] = useState(false);
-    const [prec, setPrec] = useState(0);
-    const [recall, setRecall] = useState(0);
-    const [f1, setF1] = useState(0);
-  
+    const [isClicked, setIsClicked] = useState(false);
+    const [precision, setPrecision] = useState(null); // Initialize as null
+    const [recall, setRecall] = useState(null); // Initialize as null
+    const [f1, setF1] = useState(null); // Initialize as null
+    const [predictionReady, setPredictionReady] = useState(false); // New state variable
+    const navigate = useNavigate();
+
     const handleFileChange = (event) => {
       setSelectedFile(event.target.files[0]);
       setIsUploaded(true);
@@ -20,25 +21,38 @@ function File() {
     const handleSubmit = async (event) => {
       event.preventDefault();
       setIsClicked(true);
-      console.log(selectedFile)
+      
       const formData = new FormData();
       formData.append('file', selectedFile);
     
       try {
-        const { data } = await axios.post("http://localhost:8000/upload", formData, {
+        const response = await axios.post("http://localhost:8000/upload", formData, {
           headers: {
-            Accept: "multipart/form-data",
-            "Content-Type": "multipart/form-data",
-          },
+            'Content-Type': 'multipart/form-data'
+          }
         });
-        //console.log(data) 
-        setPrec((Number(data.ps)*100).toFixed(2));
-        setRecall((Number(data.rs)*100).toFixed(2));
-        setF1((Number(data.f1)*100).toFixed(2));
+
+        const ps = (Number(response.data.ps) * 100).toFixed(2);
+        const rs = (Number(response.data.rs) * 100).toFixed(2);
+        const f1 = (Number(response.data.f1) * 100).toFixed(2);
+
+        setPrecision(ps);
+        setRecall(rs);
+        setF1(f1);
+        setPredictionReady(true);
+
+        console.log('Precision:', ps, '%');
+        console.log('Recall:', rs, '%');
+        console.log('F1:', f1, '%');
+        
+
       } catch (error) {
-        // Handle any errors that might occur during the request
         console.error('Error occurred:', error);
       }
+    };
+
+    const handleClick = () => {
+      navigate('/prediction', { state: { precision, recall, f1}});
     };
    
     return (
@@ -48,14 +62,14 @@ function File() {
 
           <form className="formulario" onSubmit={handleSubmit}>
               <input type="file" id="file" name="file" accept=".csv" onChange={handleFileChange}></input>
-              <button disabled={!isUploaded} type='submit'>Agegar</button>
+              <button disabled={!isUploaded} type='submit'>Agregar</button>
           </form>
-          <Link to={'/prediction'} state = {{precision:prec,recall:recall,f1:f1}}> <button disabled={!isClicked} className='prediccion'>Clasificar</button></Link>
+          {/* Conditionally render the Link only when predictionReady is true */}
+          {predictionReady && <button onClick={handleClick} className='prediccion'>Clasificar</button>}         
           <br></br>
           <p className='advertencia'>Es necesario subir un archivo antes de proceder</p>
         </div>
     );
-
 }
 
 export default File;
